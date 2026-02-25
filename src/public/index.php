@@ -308,14 +308,6 @@ $fecha_sel     = $filtros['fecha'];
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if (empty($tickets)): ?>
-                                <tr>
-                                    <td colspan="14" class="text-center text-muted py-4">
-                                        <i class="bi bi-inbox fs-3 d-block mb-2"></i>
-                                        No hay tickets. Importa un JSON para comenzar.
-                                    </td>
-                                </tr>
-                                <?php else: ?>
                                 <?php foreach ($tickets as $i => $t): ?>
                                 <tr>
                                     <td><?= $i + 1 ?></td>
@@ -369,7 +361,6 @@ $fecha_sel     = $filtros['fecha'];
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
-                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -503,7 +494,8 @@ $fecha_sel     = $filtros['fecha'];
 $(document).ready(function () {
     $('#ticketsTable').DataTable({
         language: {
-            url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'
+            url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json',
+            emptyTable: '<span class="text-muted"><i class="bi bi-inbox me-2"></i>No hay tickets. Importa un JSON para comenzar.</span>'
         },
         pageLength: 25,
         order: [[7, 'desc']],
