@@ -27,7 +27,7 @@ WORKDIR /var/www/html
 # Copy composer files
 COPY src/composer.json ./
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction 2>/dev/null || true
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 COPY src/ ./
 

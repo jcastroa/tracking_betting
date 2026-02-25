@@ -9,6 +9,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./src:/var/www/html
+      - vendor_data:/var/www/html/vendor
     networks:
       - betting_network
     depends_on:
@@ -23,6 +24,7 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
+      - vendor_data:/var/www/html/vendor
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - betting_network
@@ -58,4 +60,6 @@ networks:
 
 volumes:
   db_data:
+    driver: local
+  vendor_data:
     driver: local
