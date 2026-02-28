@@ -548,6 +548,17 @@ function editTicket(id) {
         });
 }
 
+// Auto-calculate ganancia when resultado changes to "ganado"
+document.getElementById('edit_resultado').addEventListener('change', function () {
+    if (this.value === 'ganado') {
+        const cuota = parseFloat(document.getElementById('edit_cuota').value) || 0;
+        const stake = parseFloat(document.getElementById('edit_stake').value) || 0;
+        document.getElementById('edit_ganancia').value = ((cuota - 1) * stake).toFixed(2);
+    } else if (this.value === 'perdido' || this.value === 'void') {
+        document.getElementById('edit_ganancia').value = '';
+    }
+});
+
 // Confirm delete
 function confirmDelete(id, partido) {
     document.getElementById('deletePartido').textContent = partido;
